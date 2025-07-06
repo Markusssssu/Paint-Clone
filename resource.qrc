@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="diamond">icons/diamond.png</file>
+        <file alias="ellipse">icons/ellipse.png</file>
+        <file alias="rectangle">icons/rectangle.png</file>
+        <file alias="triangle">icons/triangle.png</file>
+        <file alias="brush">icons/brush.png</file>
+        <file alias="pen">icons/pen.png</file>
+        <file alias="pencil">icons/pencil.png</file>
+    </qresource>
+</RCC>
