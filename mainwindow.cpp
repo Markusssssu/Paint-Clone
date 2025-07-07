@@ -119,30 +119,29 @@ MainWindow::MainWindow(QWidget *parent)
         brushBtn->setChecked(true);
         penBtn->setChecked(false);
         pencilBtn->setChecked(false);
-        canvas->setWidth(5); // Широкая кисть
+        canvas->setWidth(5); 
     });
     
     connect(penBtn, &QToolButton::clicked, [this, brushBtn, penBtn, pencilBtn]() {
-        canvas->setDrawingMode(1); // Pen
+        canvas->setDrawingMode(1); 
         brushBtn->setChecked(false);
         penBtn->setChecked(true);
         pencilBtn->setChecked(false);
-        canvas->setWidth(2); // Средняя ширина
+        canvas->setWidth(2); 
     });
     
     connect(pencilBtn, &QToolButton::clicked, [this, brushBtn, penBtn, pencilBtn]() {
-        canvas->setDrawingMode(2); // Pencil
+        canvas->setDrawingMode(2);
         brushBtn->setChecked(false);
         penBtn->setChecked(false);
         pencilBtn->setChecked(true);
-        canvas->setWidth(1); // Тонкая линия
+        canvas->setWidth(1);
     });
 
-    // --- Новый layout ---
-    // Панель кистей (слева)
+   
     QVBoxLayout* brushPanel = new QVBoxLayout;
 
-    // Brush
+    
     QHBoxLayout* brushRow = new QHBoxLayout;
     QLabel* brushLabel = new QLabel("Brush");
     brushLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
@@ -150,7 +149,7 @@ MainWindow::MainWindow(QWidget *parent)
     brushRow->addWidget(brushBtn);
     brushPanel->addLayout(brushRow);
 
-    // Pen
+  
     QHBoxLayout* penRow = new QHBoxLayout;
     QLabel* penLabel = new QLabel("Pen");
     penLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
@@ -158,7 +157,7 @@ MainWindow::MainWindow(QWidget *parent)
     penRow->addWidget(penBtn);
     brushPanel->addLayout(penRow);
 
-    // Pencil
+
     QHBoxLayout* pencilRow = new QHBoxLayout;
     QLabel* pencilLabel = new QLabel("Pencil");
     pencilLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
@@ -172,20 +171,17 @@ MainWindow::MainWindow(QWidget *parent)
     brushPanel->addWidget(colorPickBtn);
     brushPanel->addStretch();
 
-    // Панель фигур (сверху по центру)
     QHBoxLayout* figurePanel = new QHBoxLayout;
     figurePanel->addWidget(triAngleBtn);
     figurePanel->addWidget(rectAngleBtn);
     figurePanel->addWidget(ellipseBtn);
     figurePanel->addWidget(diamondBtn);
     figurePanel->addStretch();
-
-    // Центральная панель: сверху фигуры, ниже canvas
+    
     QVBoxLayout* centerPanel = new QVBoxLayout;
     centerPanel->addLayout(figurePanel);
     centerPanel->addWidget(canvas, 1);
 
-    // Основной layout: кисти слева, центр (фигуры+canvas) по центру
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     mainLayout->addLayout(brushPanel);
     mainLayout->addLayout(centerPanel, 1);
@@ -222,8 +218,7 @@ void MainWindow::plus()
 {
     if (__width < BRUSH_MAX_WIDTH) {
         ++__width;
-        // Обновляем ширину только если выбран режим кисти
-        if (canvas->getDrawingMode() <= 2) { // Brush, Pen, Pencil
+        if (canvas->getDrawingMode() <= 2) { 
             canvas->setWidth(__width);
         }
     }
@@ -233,8 +228,7 @@ void MainWindow::minus()
 {
     if (__width > BRUSH_MIN_WIDTH) {
         --__width;
-        // Обновляем ширину только если выбран режим кисти
-        if (canvas->getDrawingMode() <= 2) { // Brush, Pen, Pencil
+        if (canvas->getDrawingMode() <= 2) { 
             canvas->setWidth(__width);
         }
     }
