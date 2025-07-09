@@ -859,5 +859,5 @@ G:/Qt/Graphics/header/mainwindow.h
  mdp:G:/Qt/Graphics/header/canvas.h
  mdp:G:/Qt/Graphics/header/mainwindow.h
 G:/Qt/Graphics/src/canvas.cpp
-G:/Qt/Graphics/src/mainwindow.cpp
 G:/Qt/Graphics/src/main.cpp
+G:/Qt/Graphics/src/mainwindow.cpp

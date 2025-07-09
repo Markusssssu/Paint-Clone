@@ -47,6 +47,7 @@ protected:
     void plus();
     void minus();
     void color();
+    void resizeEvent(QResizeEvent* event) override;
 
 private:
     QColor __color;
