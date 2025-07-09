@@ -18,19 +18,39 @@
 
 TitleBar::TitleBar(QWidget *parent) : QFrame(parent) {
     setFixedHeight(30);
-    setStyleSheet("background: #222; color: white;");
+    
+    QPalette titlePalette;
+    titlePalette.setColor(QPalette::Window, QColor(34, 34, 34));
 
-    QLabel *title = new QLabel("Graphics App", this);
+    QLabel *title = new QLabel(" ", this);
     QPushButton *minBtn = new QPushButton("-", this);
     QPushButton *maxBtn = new QPushButton("□", this);
     QPushButton *closeBtn = new QPushButton("x", this);
 
+    QPalette minPalette;
+    QPalette maxPalette;
+    QPalette closePalette;
+
+    minPalette.setColor(QPalette::Button, QColor(51, 51, 51));
+    minPalette.setColor(QPalette::ButtonText, Qt::white);
+
+    maxPalette.setColor(QPalette::Button, QColor(51, 51, 51));
+    maxPalette.setColor(QPalette::ButtonText, Qt::white);
+
+    closePalette.setColor(QPalette::Button, QColor(187, 0, 0));
+    closePalette.setColor(QPalette::ButtonText, Qt::white);
+
     minBtn->setFixedSize(30, 30);
     maxBtn->setFixedSize(30, 30);
     closeBtn->setFixedSize(30, 30);
-    minBtn->setStyleSheet("background: #333; color: white; border: none;");
-    maxBtn->setStyleSheet("background: #333; color: white; border: none;");
-    closeBtn->setStyleSheet("background: #b00; color: white; border: none;");
+
+    minBtn->setPalette(minPalette);
+    maxBtn->setPalette(maxPalette);
+    closeBtn->setPalette(closePalette);
+
+    minBtn->setAutoFillBackground(1);
+    maxBtn->setAutoFillBackground(1);
+    closeBtn->setAutoFillBackground(1);
 
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(title);
