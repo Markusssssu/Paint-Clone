@@ -13,12 +13,13 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
-        canvas.cpp
-        canvas.h
+    src/main.cpp
+    src/mainwindow.cpp
+    header/mainwindow.h
+    src/canvas.cpp
+    header/canvas.h
+    mainwindow.ui
+    resource.qrc
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -27,6 +28,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         resource.qrc
     )
+    target_include_directories(Graphics PUBLIC header)
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET Graphics APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
 #                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
@@ -36,12 +38,14 @@ else()
         add_library(Graphics SHARED
             ${PROJECT_SOURCES}
         )
+        target_include_directories(Graphics PUBLIC header)
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(Graphics
             ${PROJECT_SOURCES}
         )
+        target_include_directories(Graphics PUBLIC header)
     endif()
 endif()
 

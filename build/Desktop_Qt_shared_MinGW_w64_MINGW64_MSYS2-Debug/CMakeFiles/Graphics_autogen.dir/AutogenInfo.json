@@ -332,11 +332,16 @@
 	"DEP_FILE_RULE_NAME" : "Graphics_autogen/timestamp",
 	"HEADERS" : 
 	[
-		[ "G:/Qt/Graphics/canvas.h", "MU", "EWIEGA46WW/moc_canvas.cpp", null ],
 		[
-			"G:/Qt/Graphics/mainwindow.h",
+			"G:/Qt/Graphics/header/canvas.h",
 			"MU",
-			"EWIEGA46WW/moc_mainwindow.cpp",
+			"6OFTS6FJJP/moc_canvas.cpp",
+			null
+		],
+		[
+			"G:/Qt/Graphics/header/mainwindow.h",
+			"MU",
+			"6OFTS6FJJP/moc_mainwindow.cpp",
 			null
 		]
 	],
@@ -368,6 +373,7 @@
 	],
 	"MOC_INCLUDES" : 
 	[
+		"G:/Qt/Graphics/header",
 		"C:/msys64/mingw64/include/qt6/QtCore",
 		"C:/msys64/mingw64/include/qt6",
 		"C:/msys64/mingw64/share/qt6/mkspecs/win32-g++",
@@ -413,9 +419,9 @@
 	"SETTINGS_FILE" : "G:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/CMakeFiles/Graphics_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
-		[ "G:/Qt/Graphics/canvas.cpp", "MU", null ],
-		[ "G:/Qt/Graphics/main.cpp", "MU", null ],
-		[ "G:/Qt/Graphics/mainwindow.cpp", "MU", null ]
+		[ "G:/Qt/Graphics/src/canvas.cpp", "MU", null ],
+		[ "G:/Qt/Graphics/src/main.cpp", "MU", null ],
+		[ "G:/Qt/Graphics/src/mainwindow.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

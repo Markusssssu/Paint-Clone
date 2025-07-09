@@ -1,0 +1,9 @@
+G:/Qt/Graphics/build/CMakeFiles/Graphics.dir
+G:/Qt/Graphics/build/CMakeFiles/edit_cache.dir
+G:/Qt/Graphics/build/CMakeFiles/rebuild_cache.dir
+G:/Qt/Graphics/build/CMakeFiles/list_install_components.dir
+G:/Qt/Graphics/build/CMakeFiles/install.dir
+G:/Qt/Graphics/build/CMakeFiles/install/local.dir
+G:/Qt/Graphics/build/CMakeFiles/install/strip.dir
+G:/Qt/Graphics/build/CMakeFiles/Graphics_autogen_timestamp_deps.dir
+G:/Qt/Graphics/build/CMakeFiles/Graphics_autogen.dir

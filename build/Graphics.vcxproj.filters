@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\canvas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\EWIEGA46WW_Debug\qrc_resource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\EWIEGA46WW_Release\qrc_resource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\EWIEGA46WW_MinSizeRel\qrc_resource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="G:\Qt\Graphics\build\Graphics_autogen\EWIEGA46WW_RelWithDebInfo\qrc_resource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="G:\Qt\Graphics\mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Qt\Graphics\canvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Qt\Graphics\build\Graphics_autogen\include_Debug\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Qt\Graphics\build\Graphics_autogen\include_Release\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Qt\Graphics\build\Graphics_autogen\include_MinSizeRel\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="G:\Qt\Graphics\build\Graphics_autogen\include_RelWithDebInfo\ui_mainwindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="G:\Qt\Graphics\build\CMakeFiles\f1349033220076248ef906b0fe26b58a\autouic_(CONFIG).stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="G:\Qt\Graphics\build\CMakeFiles\c79bb1585c7af6325e7b3f16943b1620\qrc_resource.cpp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="G:\Qt\Graphics\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="G:\Qt\Graphics\mainwindow.ui" />
+    <None Include="G:\Qt\Graphics\resource.qrc" />
+    <None Include="G:\Qt\Graphics\build\Graphics_autogen\autouic_Debug.stamp" />
+    <None Include="G:\Qt\Graphics\build\Graphics_autogen\autouic_Release.stamp" />
+    <None Include="G:\Qt\Graphics\build\Graphics_autogen\autouic_MinSizeRel.stamp" />
+    <None Include="G:\Qt\Graphics\build\Graphics_autogen\autouic_RelWithDebInfo.stamp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{A6EA591F-6F90-3C48-BFCF-EF60AE2C7DA1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{F8553C07-8CC5-3320-BCCA-EED0B72B1C7E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{44F1413E-0F0B-3BFD-8073-DFB87CB8802A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

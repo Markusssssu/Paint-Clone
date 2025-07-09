@@ -1,0 +1,31 @@
+{
+	"BUILD_DIR" : "G:/Qt/Graphics/build/Graphics_autogen",
+	"CMAKE_BINARY_DIR" : "G:/Qt/Graphics/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "G:/Qt/Graphics/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "G:/Qt/Graphics",
+	"CMAKE_SOURCE_DIR" : "G:/Qt/Graphics",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "MinGW Makefiles",
+	"INCLUDE_DIR" : "G:/Qt/Graphics/build/Graphics_autogen/include",
+	"INPUTS" : 
+	[
+		"G:/Qt/Graphics/icons/triangle.png",
+		"G:/Qt/Graphics/icons/diamond.png",
+		"G:/Qt/Graphics/icons/ellipse.png",
+		"G:/Qt/Graphics/icons/pencil.png",
+		"G:/Qt/Graphics/icons/rectangle.png",
+		"G:/Qt/Graphics/icons/brush.png",
+		"G:/Qt/Graphics/icons/pen.png"
+	],
+	"LOCK_FILE" : "G:/Qt/Graphics/build/CMakeFiles/Graphics_autogen.dir/AutoRcc_resource_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resource" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resource.cpp",
+	"RCC_EXECUTABLE" : "C:/msys64/mingw64/share/qt6/bin/rcc.exe",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "G:/Qt/Graphics/build/CMakeFiles/Graphics_autogen.dir/AutoRcc_resource_EWIEGA46WW_Used.txt",
+	"SOURCE" : "G:/Qt/Graphics/resource.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

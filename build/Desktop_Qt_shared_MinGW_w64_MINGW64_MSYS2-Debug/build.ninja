@@ -54,43 +54,43 @@ build CMakeFiles/Graphics.dir/Graphics_autogen/mocs_compilation.cpp.obj: CXX_COM
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
   DEP_FILE = CMakeFiles\Graphics.dir\Graphics_autogen\mocs_compilation.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
+  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -IG:/Qt/Graphics/header -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
   OBJECT_DIR = CMakeFiles\Graphics.dir
   OBJECT_FILE_DIR = CMakeFiles\Graphics.dir\Graphics_autogen
 
-build CMakeFiles/Graphics.dir/main.cpp.obj: CXX_COMPILER__Graphics_unscanned_Debug G$:/Qt/Graphics/main.cpp || cmake_object_order_depends_target_Graphics
+build CMakeFiles/Graphics.dir/src/main.cpp.obj: CXX_COMPILER__Graphics_unscanned_Debug G$:/Qt/Graphics/src/main.cpp || cmake_object_order_depends_target_Graphics
   CONFIG = Debug
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
-  DEP_FILE = CMakeFiles\Graphics.dir\main.cpp.obj.d
+  DEP_FILE = CMakeFiles\Graphics.dir\src\main.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
+  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -IG:/Qt/Graphics/header -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
   OBJECT_DIR = CMakeFiles\Graphics.dir
-  OBJECT_FILE_DIR = CMakeFiles\Graphics.dir
+  OBJECT_FILE_DIR = CMakeFiles\Graphics.dir\src
 
-build CMakeFiles/Graphics.dir/mainwindow.cpp.obj: CXX_COMPILER__Graphics_unscanned_Debug G$:/Qt/Graphics/mainwindow.cpp || cmake_object_order_depends_target_Graphics
+build CMakeFiles/Graphics.dir/src/mainwindow.cpp.obj: CXX_COMPILER__Graphics_unscanned_Debug G$:/Qt/Graphics/src/mainwindow.cpp || cmake_object_order_depends_target_Graphics
   CONFIG = Debug
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
-  DEP_FILE = CMakeFiles\Graphics.dir\mainwindow.cpp.obj.d
+  DEP_FILE = CMakeFiles\Graphics.dir\src\mainwindow.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
+  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -IG:/Qt/Graphics/header -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
   OBJECT_DIR = CMakeFiles\Graphics.dir
-  OBJECT_FILE_DIR = CMakeFiles\Graphics.dir
+  OBJECT_FILE_DIR = CMakeFiles\Graphics.dir\src
 
-build CMakeFiles/Graphics.dir/canvas.cpp.obj: CXX_COMPILER__Graphics_unscanned_Debug G$:/Qt/Graphics/canvas.cpp || cmake_object_order_depends_target_Graphics
+build CMakeFiles/Graphics.dir/src/canvas.cpp.obj: CXX_COMPILER__Graphics_unscanned_Debug G$:/Qt/Graphics/src/canvas.cpp || cmake_object_order_depends_target_Graphics
   CONFIG = Debug
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
-  DEP_FILE = CMakeFiles\Graphics.dir\canvas.cpp.obj.d
+  DEP_FILE = CMakeFiles\Graphics.dir\src\canvas.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
+  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -IG:/Qt/Graphics/header -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
   OBJECT_DIR = CMakeFiles\Graphics.dir
-  OBJECT_FILE_DIR = CMakeFiles\Graphics.dir
+  OBJECT_FILE_DIR = CMakeFiles\Graphics.dir\src
 
 build CMakeFiles/Graphics.dir/Graphics_autogen/EWIEGA46WW/qrc_resource.cpp.obj: CXX_COMPILER__Graphics_unscanned_Debug G$:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/EWIEGA46WW/qrc_resource.cpp || cmake_object_order_depends_target_Graphics
   CONFIG = Debug
   DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -DWINVER=0x0A00 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WIN64
   DEP_FILE = CMakeFiles\Graphics.dir\Graphics_autogen\EWIEGA46WW\qrc_resource.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
+  INCLUDES = -IG:/Qt/Graphics/build/Desktop_Qt_shared_MinGW_w64_MINGW64_MSYS2-Debug/Graphics_autogen/include -IG:/Qt/Graphics/header -isystem C:/msys64/mingw64/include/qt6/QtCore -isystem C:/msys64/mingw64/include/qt6 -isystem C:/msys64/mingw64/share/qt6/mkspecs/win32-g++ -isystem C:/msys64/mingw64/include/qt6/QtWidgets -isystem C:/msys64/mingw64/include/qt6/QtGui
   OBJECT_DIR = CMakeFiles\Graphics.dir
   OBJECT_FILE_DIR = CMakeFiles\Graphics.dir\Graphics_autogen\EWIEGA46WW
 
@@ -102,7 +102,7 @@ build CMakeFiles/Graphics.dir/Graphics_autogen/EWIEGA46WW/qrc_resource.cpp.obj: 
 #############################################
 # Link the executable Graphics.exe
 
-build Graphics.exe: CXX_EXECUTABLE_LINKER__Graphics_Debug CMakeFiles/Graphics.dir/Graphics_autogen/mocs_compilation.cpp.obj CMakeFiles/Graphics.dir/main.cpp.obj CMakeFiles/Graphics.dir/mainwindow.cpp.obj CMakeFiles/Graphics.dir/canvas.cpp.obj CMakeFiles/Graphics.dir/Graphics_autogen/EWIEGA46WW/qrc_resource.cpp.obj | C$:/msys64/mingw64/lib/libQt6Widgets.dll.a C$:/msys64/mingw64/lib/libQt6Gui.dll.a C$:/msys64/mingw64/lib/libQt6Core.dll.a C$:/msys64/mingw64/lib/libQt6EntryPoint.a || Graphics_autogen Graphics_autogen_timestamp_deps
+build Graphics.exe: CXX_EXECUTABLE_LINKER__Graphics_Debug CMakeFiles/Graphics.dir/Graphics_autogen/mocs_compilation.cpp.obj CMakeFiles/Graphics.dir/src/main.cpp.obj CMakeFiles/Graphics.dir/src/mainwindow.cpp.obj CMakeFiles/Graphics.dir/src/canvas.cpp.obj CMakeFiles/Graphics.dir/Graphics_autogen/EWIEGA46WW/qrc_resource.cpp.obj | C$:/msys64/mingw64/lib/libQt6Widgets.dll.a C$:/msys64/mingw64/lib/libQt6Gui.dll.a C$:/msys64/mingw64/lib/libQt6Core.dll.a C$:/msys64/mingw64/lib/libQt6EntryPoint.a || Graphics_autogen Graphics_autogen_timestamp_deps
   CONFIG = Debug
   FLAGS = -g
   LINK_FLAGS = -mwindows
