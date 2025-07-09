@@ -17,10 +17,18 @@
      */
 
 TitleBar::TitleBar(QWidget *parent) : QFrame(parent) {
+<<<<<<< HEAD
 
     QPalette titlePalette;
     titlePalette.setColor(QPalette::Window, QColor(34, 34, 34));
 
+=======
+    setFixedHeight(30);
+    
+    QPalette titlePalette;
+    titlePalette.setColor(QPalette::Window, QColor(34, 34, 34));
+
+>>>>>>> fa673430143476d7aa687051f1522a2aebe023c0
     QLabel *title = new QLabel(" ", this);
     QPushButton *minBtn = new QPushButton("-", this);
     QPushButton *maxBtn = new QPushButton("□", this);
