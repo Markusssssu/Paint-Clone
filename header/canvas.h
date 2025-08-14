@@ -14,6 +14,16 @@ class Canvas : public QWidget
 public:
     explicit Canvas(QWidget *parent = nullptr);
     
+    // Move semantics
+    Canvas(Canvas&& other) noexcept;
+    Canvas& operator=(Canvas&& other) noexcept;
+    
+    // Delete copy constructor and assignment to enforce move semantics
+    Canvas(const Canvas&) = delete;
+    Canvas& operator=(const Canvas&) = delete;
+    
+    ~Canvas();
+    
     void setColor(const QColor &color);
     void setWidth(int width);
     void setDrawingMode(int mode);
@@ -22,6 +32,13 @@ public:
     QColor getColor() const;
     void undo();
     void redo();
+    
+    // Move methods for efficient data transfer
+    void addLineData(QVector<LineData>&& lines);
+    void addRectangleData(QVector<RectangleData>&& rectangles);
+    void addEllipseData(QVector<EllipseData>&& ellipses);
+    void addTriangleData(QVector<TriangleData>&& triangles);
+    void addDiamondData(QVector<DiamondData>&& diamonds);
 
 private:
     void drawTriangle(QPainter &painter, const QPointF &start, const QPointF &end);
@@ -66,6 +83,29 @@ private:
         QLine line;
         QColor color;
         int width;
+        
+        // Move constructor for LineData
+        LineData(LineData&& other) noexcept 
+            : line(std::move(other.line))
+            , color(std::move(other.color))
+            , width(other.width) {}
+            
+        // Move assignment for LineData
+        LineData& operator=(LineData&& other) noexcept {
+            if (this != &other) {
+                line = std::move(other.line);
+                color = std::move(other.color);
+                width = other.width;
+            }
+            return *this;
+        }
+        
+        // Default constructor
+        LineData() = default;
+        
+        // Constructor with parameters
+        LineData(const QLine& l, const QColor& c, int w) 
+            : line(l), color(c), width(w) {}
     };
 
     struct LinesData 
@@ -80,6 +120,29 @@ private:
         QPolygon triangle;
         QColor color;
         int width;
+        
+        // Move constructor for TriangleData
+        TriangleData(TriangleData&& other) noexcept 
+            : triangle(std::move(other.triangle))
+            , color(std::move(other.color))
+            , width(other.width) {}
+            
+        // Move assignment for TriangleData
+        TriangleData& operator=(TriangleData&& other) noexcept {
+            if (this != &other) {
+                triangle = std::move(other.triangle);
+                color = std::move(other.color);
+                width = other.width;
+            }
+            return *this;
+        }
+        
+        // Default constructor
+        TriangleData() = default;
+        
+        // Constructor with parameters
+        TriangleData(const QPolygon& t, const QColor& c, int w) 
+            : triangle(t), color(c), width(w) {}
     };
 
     struct DiamondData
@@ -87,6 +150,29 @@ private:
         QPolygon diamond;
         QColor color;
         int width;
+        
+        // Move constructor for DiamondData
+        DiamondData(DiamondData&& other) noexcept 
+            : diamond(std::move(other.diamond))
+            , color(std::move(other.color))
+            , width(other.width) {}
+            
+        // Move assignment for DiamondData
+        DiamondData& operator=(DiamondData&& other) noexcept {
+            if (this != &other) {
+                diamond = std::move(other.diamond);
+                color = std::move(other.color);
+                width = other.width;
+            }
+            return *this;
+        }
+        
+        // Default constructor
+        DiamondData() = default;
+        
+        // Constructor with parameters
+        DiamondData(const QPolygon& d, const QColor& c, int w) 
+            : diamond(d), color(c), width(w) {}
     };
 
     struct RectangleData
@@ -94,6 +180,29 @@ private:
         QRect rectangle;
         QColor color;
         int width;
+        
+        // Move constructor for RectangleData
+        RectangleData(RectangleData&& other) noexcept 
+            : rectangle(std::move(other.rectangle))
+            , color(std::move(other.color))
+            , width(other.width) {}
+            
+        // Move assignment for RectangleData
+        RectangleData& operator=(RectangleData&& other) noexcept {
+            if (this != &other) {
+                rectangle = std::move(other.rectangle);
+                color = std::move(other.color);
+                width = other.width;
+            }
+            return *this;
+        }
+        
+        // Default constructor
+        RectangleData() = default;
+        
+        // Constructor with parameters
+        RectangleData(const QRect& r, const QColor& c, int w) 
+            : rectangle(r), color(c), width(w) {}
     };
 
     struct EllipseData
@@ -101,6 +210,29 @@ private:
         QRect ellipse;
         QColor color;
         int width;
+        
+        // Move constructor for EllipseData
+        EllipseData(EllipseData&& other) noexcept 
+            : ellipse(std::move(other.ellipse))
+            , color(std::move(other.color))
+            , width(other.width) {}
+            
+        // Move assignment for EllipseData
+        EllipseData& operator=(EllipseData&& other) noexcept {
+            if (this != &other) {
+                ellipse = std::move(other.ellipse);
+                color = std::move(other.color);
+                width = other.width;
+            }
+            return *this;
+        }
+        
+        // Default constructor
+        EllipseData() = default;
+        
+        // Constructor with parameters
+        EllipseData(const QRect& e, const QColor& c, int w) 
+            : ellipse(e), color(c), width(w) {}
     };
 
 private:
@@ -111,6 +243,29 @@ private:
         QVector<RectangleData> rectangle;
         QVector<TriangleData> triangle;
         QVector<DiamondData> diamond;
+        
+        // Move constructor for CanvasState
+        CanvasState(CanvasState&& other) noexcept 
+            : line(std::move(other.line))
+            , ellipse(std::move(other.ellipse))
+            , rectangle(std::move(other.rectangle))
+            , triangle(std::move(other.triangle))
+            , diamond(std::move(other.diamond)) {}
+            
+        // Move assignment for CanvasState
+        CanvasState& operator=(CanvasState&& other) noexcept {
+            if (this != &other) {
+                line = std::move(other.line);
+                ellipse = std::move(other.ellipse);
+                rectangle = std::move(other.rectangle);
+                triangle = std::move(other.triangle);
+                diamond = std::move(other.diamond);
+            }
+            return *this;
+        }
+        
+        // Default constructor
+        CanvasState() = default;
     };
 
 private:

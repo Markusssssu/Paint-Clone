@@ -72,6 +72,29 @@ TitleBar::TitleBar(QWidget *parent) : QFrame(parent) {
     connect(closeBtn, &QPushButton::clicked, this, &TitleBar::closeClicked);
 }
 
+// Move constructor for TitleBar
+TitleBar::TitleBar(TitleBar&& other) noexcept
+    : QFrame(std::move(other))
+    , m_dragPosition(std::move(other.m_dragPosition))
+{
+}
+
+// Move assignment operator for TitleBar
+TitleBar& TitleBar::operator=(TitleBar&& other) noexcept
+{
+    if (this != &other) {
+        QFrame::operator=(std::move(other));
+        m_dragPosition = std::move(other.m_dragPosition);
+    }
+    return *this;
+}
+
+// Destructor for TitleBar
+TitleBar::~TitleBar()
+{
+    // Qt will handle cleanup automatically
+}
+
 void TitleBar::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
         m_dragPosition = event->globalPosition().toPoint() - parentWidget()->frameGeometry().topLeft();
@@ -92,6 +115,53 @@ MainWindow::MainWindow(QWidget *parent)
         __width(BRUSH_MIN_WIDTH)
 {
     setWindowFlags(Qt::FramelessWindowHint | Qt::Window);
+    setMinimumSize(800, 600);
+    setStyleSheet(R"(
+        QWidget {
+            background-color: #2b2b2b;
+            color: #ffffff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 10px;
+        }
+        QPushButton {
+            background-color: #404040;
+            border: 1px solid #555555;
+            border-radius: 4px;
+            padding: 6px 12px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        QPushButton:hover {
+            background-color: #505050;
+            border-color: #666666;
+        }
+        QPushButton:pressed {
+            background-color: #303030;
+        }
+        QToolButton {
+            background-color: #404040;
+            border: 1px solid #555555;
+            border-radius: 4px;
+            padding: 4px;
+            color: #ffffff;
+        }
+        QToolButton:hover {
+            background-color: #505050;
+            border-color: #666666;
+        }
+        QToolButton:checked {
+            background-color: #0078d4;
+            border-color: #0078d4;
+        }
+        QLabel {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        QFrame {
+            background-color: #1e1e1e;
+            border: none;
+        }
+    )");
 
     titleBar = new TitleBar(this);
     titleBar->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -102,57 +172,67 @@ MainWindow::MainWindow(QWidget *parent)
     connect(titleBar, &TitleBar::closeClicked, this, &QWidget::close);
 
     canvas = new Canvas(this);
-    canvas->setFixedSize(500, 500);
+    canvas->setFixedSize(600, 500);
     canvas->setColor(__color);
     canvas->setWidth(__width);
 
+    // Create control buttons with improved styling
     QPushButton* plusBtn = new QPushButton("+");
     QPushButton* minusBtn = new QPushButton("-");
+    plusBtn->setFixedSize(40, 30);
+    minusBtn->setFixedSize(40, 30);
+    plusBtn->setStyleSheet("QPushButton { font-size: 16px; font-weight: bold; }");
+    minusBtn->setStyleSheet("QPushButton { font-size: 16px; font-weight: bold; }");
 
     connect(plusBtn, &QPushButton::clicked, this, &MainWindow::plus);
     connect(minusBtn, &QPushButton::clicked, this, &MainWindow::minus);
 
+    // Create figure buttons with improved styling
     QToolButton* triAngleBtn = new QToolButton();
     triAngleBtn->setIcon(QIcon(":/icons/triangle"));
     triAngleBtn->setToolTip("Triangle");
-    triAngleBtn->setFixedSize(50, 25);
-    triAngleBtn->setCheckable(1);
+    triAngleBtn->setFixedSize(60, 35);
+    triAngleBtn->setCheckable(true);
 
     QToolButton* rectAngleBtn = new QToolButton();
     rectAngleBtn->setIcon(QIcon(":/icons/rectangle"));
     rectAngleBtn->setToolTip("Rectangle");
-    rectAngleBtn->setFixedSize(50, 25);
-    rectAngleBtn->setCheckable(1);
+    rectAngleBtn->setFixedSize(60, 35);
+    rectAngleBtn->setCheckable(true);
 
     QToolButton* ellipseBtn = new QToolButton();
     ellipseBtn->setIcon(QIcon(":/icons/ellipse"));
     ellipseBtn->setToolTip("Ellipse");
-    ellipseBtn->setFixedSize(50, 25);
-    ellipseBtn->setCheckable(1);
+    ellipseBtn->setFixedSize(60, 35);
+    ellipseBtn->setCheckable(true);
 
     QToolButton* diamondBtn = new QToolButton();
     diamondBtn->setIcon(QIcon(":/icons/diamond"));
     diamondBtn->setToolTip("Diamond");
-    diamondBtn->setFixedSize(50, 25);
-    diamondBtn->setCheckable(1);
+    diamondBtn->setFixedSize(60, 35);
+    diamondBtn->setCheckable(true);
 
     QToolButton* lineBtn = new QToolButton();
-    lineBtn->setText("/");
+    lineBtn->setText("╱");
     lineBtn->setToolTip("Line");
-    lineBtn->setFixedSize(50, 25);
-    lineBtn->setCheckable(1);
+    lineBtn->setFixedSize(60, 35);
+    lineBtn->setCheckable(true);
+    lineBtn->setStyleSheet("QToolButton { font-size: 18px; font-weight: bold; }");
 
     QToolButton* moveFigureBtn = new QToolButton();
-    moveFigureBtn->setText("#");
+    moveFigureBtn->setText("✋");
     moveFigureBtn->setToolTip("Move");
-    moveFigureBtn->setFixedSize(50, 25);
-    moveFigureBtn->setCheckable(1);
+    moveFigureBtn->setFixedSize(60, 35);
+    moveFigureBtn->setCheckable(true);
+    moveFigureBtn->setStyleSheet("QToolButton { font-size: 16px; }");
 
-    QPushButton* undoBtn = new QPushButton("Undo <--");
-    undoBtn->setFixedSize(50, 25);
+    QPushButton* undoBtn = new QPushButton("↶ Undo");
+    undoBtn->setFixedSize(80, 35);
+    undoBtn->setStyleSheet("QPushButton { font-size: 11px; }");
 
-    QPushButton* redoBtn = new QPushButton("Reod -->");
-    redoBtn->setFixedSize(50, 25);
+    QPushButton* redoBtn = new QPushButton("Redo ↷");
+    redoBtn->setFixedSize(80, 35);
+    redoBtn->setStyleSheet("QPushButton { font-size: 11px; }");
 
     connect(triAngleBtn, &QToolButton::clicked, [this, triAngleBtn, rectAngleBtn, ellipseBtn, diamondBtn, lineBtn, moveFigureBtn]() {
         canvas->setDrawingMode(3); // Triangle
@@ -219,21 +299,24 @@ MainWindow::MainWindow(QWidget *parent)
 
     QToolButton* brushBtn = new QToolButton();
     brushBtn->setIcon(QIcon(":/icons/brush"));
-    brushBtn->setToolTip("brush");
+    brushBtn->setToolTip("Brush");
     brushBtn->setCheckable(true);
+    brushBtn->setFixedSize(60, 35);
 
     QToolButton* penBtn = new QToolButton();
     penBtn->setIcon(QIcon(":/icons/pen"));
-    penBtn->setToolTip("pen");
-    penBtn->setCheckable(1);
+    penBtn->setToolTip("Pen");
+    penBtn->setCheckable(true);
+    penBtn->setFixedSize(60, 35);
 
     QToolButton* pencilBtn = new QToolButton();
     pencilBtn->setIcon(QIcon(":/icons/pencil"));
-    pencilBtn->setToolTip("pencil");
-    pencilBtn->setCheckable(1);
+    pencilBtn->setToolTip("Pencil");
+    pencilBtn->setCheckable(true);
+    pencilBtn->setFixedSize(60, 35);
 
     colorPickBtn = new QToolButton();
-    colorPickBtn->setFixedSize(50, 20);
+    colorPickBtn->setFixedSize(60, 35);
 
     QPalette colorChangePalette = colorPickBtn->palette();
     colorChangePalette.setBrush(QPalette::Base, __color);
@@ -241,7 +324,8 @@ MainWindow::MainWindow(QWidget *parent)
     colorPickBtn->setPalette(colorChangePalette);
 
     QToolButton* colorBtn = new QToolButton();
-    colorBtn->setText("Color");
+    colorBtn->setText("Pick Color");
+    colorBtn->setFixedSize(80, 35);
 
     connect(colorBtn, &QToolButton::clicked, this, color);
     
@@ -270,49 +354,88 @@ MainWindow::MainWindow(QWidget *parent)
     });
 
     QVBoxLayout* brushPanel = new QVBoxLayout;
+    brushPanel->setSpacing(10);
+    brushPanel->setContentsMargins(15, 15, 15, 15);
+    
+    QLabel* toolsLabel = new QLabel("Drawing Tools");
+    toolsLabel->setStyleSheet("QLabel { font-size: 12px; font-weight: bold; color: #ffffff; margin-bottom: 10px; }");
+    brushPanel->addWidget(toolsLabel);
+    
     QHBoxLayout* brushRow = new QHBoxLayout;
     QLabel* brushLabel = new QLabel("Brush");
     brushLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
+    brushLabel->setFixedWidth(60);
     brushRow->addWidget(brushLabel);
     brushRow->addWidget(brushBtn);
+    brushRow->addStretch();
     brushPanel->addLayout(brushRow);
 
     QHBoxLayout* penRow = new QHBoxLayout;
     QLabel* penLabel = new QLabel("Pen");
     penLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
+    penLabel->setFixedWidth(60);
     penRow->addWidget(penLabel);
     penRow->addWidget(penBtn);
+    penRow->addStretch();
     brushPanel->addLayout(penRow);
 
     QHBoxLayout* pencilRow = new QHBoxLayout;
     QLabel* pencilLabel = new QLabel("Pencil");
     pencilLabel->setAlignment(Qt::AlignVCenter | Qt::AlignRight);
+    pencilLabel->setFixedWidth(60);
     pencilRow->addWidget(pencilLabel);
-    pencilRow->addWidget(pencilBtn); 
+    pencilRow->addWidget(pencilBtn);
+    pencilRow->addStretch();
     brushPanel->addLayout(pencilRow); 
 
-    brushPanel->addWidget(plusBtn);
-    brushPanel->addWidget(minusBtn);
+    QLabel* sizeLabel = new QLabel("Brush Size");
+    sizeLabel->setStyleSheet("QLabel { font-size: 12px; font-weight: bold; color: #ffffff; margin-top: 15px; }");
+    brushPanel->addWidget(sizeLabel);
+    
+    QHBoxLayout* sizeLayout = new QHBoxLayout;
+    sizeLayout->addWidget(minusBtn);
+    sizeLayout->addWidget(plusBtn);
+    sizeLayout->addStretch();
+    brushPanel->addLayout(sizeLayout);
+    
+    QLabel* colorLabel = new QLabel("Color");
+    colorLabel->setStyleSheet("QLabel { font-size: 12px; font-weight: bold; color: #ffffff; margin-top: 15px; }");
+    brushPanel->addWidget(colorLabel);
+    
     brushPanel->addWidget(colorBtn);
     brushPanel->addWidget(colorPickBtn);
     brushPanel->addStretch();
 
     QHBoxLayout* figurePanel = new QHBoxLayout;
+    figurePanel->setSpacing(8);
+    figurePanel->setContentsMargins(15, 10, 15, 10);
+    
+    QLabel* figuresLabel = new QLabel("Shapes & Tools");
+    figuresLabel->setStyleSheet("QLabel { font-size: 12px; font-weight: bold; color: #ffffff; margin-right: 15px; }");
+    figurePanel->addWidget(figuresLabel);
+    
     figurePanel->addWidget(triAngleBtn);
     figurePanel->addWidget(rectAngleBtn);
     figurePanel->addWidget(ellipseBtn);
     figurePanel->addWidget(diamondBtn);
     figurePanel->addWidget(lineBtn);
     figurePanel->addWidget(moveFigureBtn);
+    
+    figurePanel->addSpacing(20);
+    
     figurePanel->addWidget(undoBtn);
     figurePanel->addWidget(redoBtn);
     figurePanel->addStretch();
 
     QVBoxLayout* centerPanel = new QVBoxLayout;
+    centerPanel->setSpacing(0);
+    centerPanel->setContentsMargins(0, 0, 0, 0);
     centerPanel->addLayout(figurePanel);
     centerPanel->addWidget(canvas, 1);
 
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
+    mainLayout->setSpacing(0);
+    mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->addLayout(brushPanel);
     mainLayout->addLayout(centerPanel, 1);
     mainLayout->addStretch();
@@ -377,6 +500,53 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     if (titleBar) {
         titleBar->setFixedWidth(this->width());
     }
+}
+
+// Move constructor for MainWindow
+MainWindow::MainWindow(MainWindow&& other) noexcept
+    : QWidget(std::move(other))
+    , __color(std::move(other.__color))
+    , __width(other.__width)
+    , colorPickBtn(other.colorPickBtn)
+    , canvas(other.canvas)
+    , titleBar(other.titleBar)
+{
+    // Transfer ownership of pointers
+    other.colorPickBtn = nullptr;
+    other.canvas = nullptr;
+    other.titleBar = nullptr;
+}
+
+// Move assignment operator for MainWindow
+MainWindow& MainWindow::operator=(MainWindow&& other) noexcept
+{
+    if (this != &other) {
+        QWidget::operator=(std::move(other));
+        __color = std::move(other.__color);
+        __width = other.__width;
+        
+        // Clean up current resources
+        delete colorPickBtn;
+        delete canvas;
+        delete titleBar;
+        
+        // Transfer ownership
+        colorPickBtn = other.colorPickBtn;
+        canvas = other.canvas;
+        titleBar = other.titleBar;
+        
+        // Clear other's pointers
+        other.colorPickBtn = nullptr;
+        other.canvas = nullptr;
+        other.titleBar = nullptr;
+    }
+    return *this;
+}
+
+// Destructor for MainWindow
+MainWindow::~MainWindow()
+{
+    // Qt will handle cleanup of child widgets automatically
 }
 
 

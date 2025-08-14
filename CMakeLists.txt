@@ -18,6 +18,8 @@ set(PROJECT_SOURCES
     header/mainwindow.h
     src/canvas.cpp
     header/canvas.h
+    src/titleBar.cpp
+    header/titleBar.h
     mainwindow.ui
     resource.qrc
 )
