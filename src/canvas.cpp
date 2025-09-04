@@ -64,8 +64,8 @@ Canvas& Canvas::operator=(Canvas&& other) noexcept
         m_ellipses = std::move(other.m_ellipses);
         m_triangles = std::move(other.m_triangles);
         m_diamonds = std::move(other.m_diamonds);
-        undoStack = std::move(other.undoStack);
-        redoStack = std::move(other.redoStack);
+        m_undoStack = std::move(other.undoStack);
+        m_redoStack = std::move(other.redoStack);
     }
     return *this;
 }
