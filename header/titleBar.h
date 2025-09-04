@@ -10,11 +10,9 @@ class TitleBar : public QFrame {
 public:
     explicit TitleBar(QWidget *parent = nullptr);
     
-    // Move semantics
     TitleBar(TitleBar&& other) noexcept;
     TitleBar& operator=(TitleBar&& other) noexcept;
     
-    // Delete copy constructor and assignment
     TitleBar(const TitleBar&) = delete;
     TitleBar& operator=(const TitleBar&) = delete;
     
