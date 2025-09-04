@@ -222,11 +222,11 @@ private:
 private:
     struct CanvasState 
     {
-        QVector<LineData> line;
-        QVector<EllipseData> ellipse;
-        QVector<RectangleData> rectangle;
-        QVector<TriangleData> triangle;
-        QVector<DiamondData> diamond;
+        QVector<LineData> m_line;
+        QVector<EllipseData> m_ellipse;
+        QVector<RectangleData> m_rectangle;
+        QVector<TriangleData> m_triangle;
+        QVector<DiamondData> m_diamond;
         
         CanvasState(CanvasState&& other) noexcept 
             : line(std::move(other.line))
@@ -259,6 +259,6 @@ private:
     QVector<DiamondData> m_diamonds;
 
 private:
-    QVector<CanvasState> undoStack;
-    QVector<CanvasState> redoStack;
+    QVector<CanvasState> m_undoStack;
+    QVector<CanvasState> m_redoStack;
 };
