@@ -14,11 +14,9 @@ class Canvas : public QWidget
 public:
     explicit Canvas(QWidget *parent = nullptr);
     
-    // Move semantics
     Canvas(Canvas&& other) noexcept;
     Canvas& operator=(Canvas&& other) noexcept;
     
-    // Delete copy constructor and assignment to enforce move semantics
     Canvas(const Canvas&) = delete;
     Canvas& operator=(const Canvas&) = delete;
     
@@ -33,7 +31,6 @@ public:
     void undo();
     void redo();
     
-    // Move methods for efficient data transfer
     void addLineData(QVector<LineData>&& lines);
     void addRectangleData(QVector<RectangleData>&& rectangles);
     void addEllipseData(QVector<EllipseData>&& ellipses);
@@ -84,13 +81,11 @@ private:
         QColor color;
         int width;
         
-        // Move constructor for LineData
         LineData(LineData&& other) noexcept 
             : line(std::move(other.line))
             , color(std::move(other.color))
             , width(other.width) {}
             
-        // Move assignment for LineData
         LineData& operator=(LineData&& other) noexcept {
             if (this != &other) {
                 line = std::move(other.line);
@@ -100,10 +95,8 @@ private:
             return *this;
         }
         
-        // Default constructor
         LineData() = default;
         
-        // Constructor with parameters
         LineData(const QLine& l, const QColor& c, int w) 
             : line(l), color(c), width(w) {}
     };
@@ -137,10 +130,8 @@ private:
             return *this;
         }
         
-        // Default constructor
         TriangleData() = default;
         
-        // Constructor with parameters
         TriangleData(const QPolygon& t, const QColor& c, int w) 
             : triangle(t), color(c), width(w) {}
     };
@@ -151,13 +142,11 @@ private:
         QColor color;
         int width;
         
-        // Move constructor for DiamondData
         DiamondData(DiamondData&& other) noexcept 
             : diamond(std::move(other.diamond))
             , color(std::move(other.color))
             , width(other.width) {}
             
-        // Move assignment for DiamondData
         DiamondData& operator=(DiamondData&& other) noexcept {
             if (this != &other) {
                 diamond = std::move(other.diamond);
@@ -167,10 +156,9 @@ private:
             return *this;
         }
         
-        // Default constructor
         DiamondData() = default;
         
-        // Constructor with parameters
+    
         DiamondData(const QPolygon& d, const QColor& c, int w) 
             : diamond(d), color(c), width(w) {}
     };
@@ -181,7 +169,6 @@ private:
         QColor color;
         int width;
         
-        // Move constructor for RectangleData
         RectangleData(RectangleData&& other) noexcept 
             : rectangle(std::move(other.rectangle))
             , color(std::move(other.color))
@@ -244,7 +231,6 @@ private:
         QVector<TriangleData> triangle;
         QVector<DiamondData> diamond;
         
-        // Move constructor for CanvasState
         CanvasState(CanvasState&& other) noexcept 
             : line(std::move(other.line))
             , ellipse(std::move(other.ellipse))
@@ -252,7 +238,6 @@ private:
             , triangle(std::move(other.triangle))
             , diamond(std::move(other.diamond)) {}
             
-        // Move assignment for CanvasState
         CanvasState& operator=(CanvasState&& other) noexcept {
             if (this != &other) {
                 line = std::move(other.line);
@@ -264,7 +249,6 @@ private:
             return *this;
         }
         
-        // Default constructor
         CanvasState() = default;
     };
 
