@@ -5,19 +5,6 @@
 #include <QMouseEvent>
 #include <QApplication>
 
-// signals:
-//     void minimizeClicked();
-//     void maximizeClicked();
-//     void closeClicked();
-
-// protected:
-//     void mousePresstEvent(QMouseEvent *event) override;
-//     void mouseMoveEvent(QMouseEvent *event) override;
-
-// private:
-//     QPoint m_dragPosition;
-
-
 TitleBar::TitleBar(QWidget *parent) : QFrame(parent) {
     setFixedHeight(40);
     setStyleSheet(R"(
@@ -66,7 +53,6 @@ TitleBar::TitleBar(QWidget *parent) : QFrame(parent) {
     maxBtn->setToolTip("Maximize");
     closeBtn->setToolTip("Close");
     
-    // Special styling for close button
     closeBtn->setStyleSheet(R"(
         QPushButton {
             background-color: transparent;
