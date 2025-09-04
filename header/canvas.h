@@ -114,13 +114,11 @@ private:
         QColor color;
         int width;
         
-        // Move constructor for TriangleData
         TriangleData(TriangleData&& other) noexcept 
             : triangle(std::move(other.triangle))
             , color(std::move(other.color))
             , width(other.width) {}
             
-        // Move assignment for TriangleData
         TriangleData& operator=(TriangleData&& other) noexcept {
             if (this != &other) {
                 triangle = std::move(other.triangle);
@@ -174,7 +172,6 @@ private:
             , color(std::move(other.color))
             , width(other.width) {}
             
-        // Move assignment for RectangleData
         RectangleData& operator=(RectangleData&& other) noexcept {
             if (this != &other) {
                 rectangle = std::move(other.rectangle);
