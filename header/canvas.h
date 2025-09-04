@@ -181,10 +181,8 @@ private:
             return *this;
         }
         
-        // Default constructor
         RectangleData() = default;
         
-        // Constructor with parameters
         RectangleData(const QRect& r, const QColor& c, int w) 
             : rectangle(r), color(c), width(w) {}
     };
@@ -195,13 +193,11 @@ private:
         QColor color;
         int width;
         
-        // Move constructor for EllipseData
         EllipseData(EllipseData&& other) noexcept 
             : ellipse(std::move(other.ellipse))
             , color(std::move(other.color))
             , width(other.width) {}
             
-        // Move assignment for EllipseData
         EllipseData& operator=(EllipseData&& other) noexcept {
             if (this != &other) {
                 ellipse = std::move(other.ellipse);
@@ -211,10 +207,8 @@ private:
             return *this;
         }
         
-        // Default constructor
         EllipseData() = default;
         
-        // Constructor with parameters
         EllipseData(const QRect& e, const QColor& c, int w) 
             : ellipse(e), color(c), width(w) {}
     };
