@@ -17,7 +17,6 @@ Canvas::Canvas(QWidget *parent)
     setPalette(palette);
     setAutoFillBackground(true);
     
-    // Add modern styling
     setStyleSheet(R"(
         QWidget {
             background-color: #ffffff;
@@ -29,11 +28,9 @@ Canvas::Canvas(QWidget *parent)
         }
     )");
     
-    // Add shadow effect
-    setGraphicsEffect(nullptr); // Remove any existing effects
+    setGraphicsEffect(nullptr); 
 }
 
-// Move constructor
 Canvas::Canvas(Canvas&& other) noexcept
     : QWidget(std::move(other))
     , m_color(std::move(other.m_color))
@@ -52,7 +49,6 @@ Canvas::Canvas(Canvas&& other) noexcept
 {
 }
 
-// Move assignment operator
 Canvas& Canvas::operator=(Canvas&& other) noexcept
 {
     if (this != &other) {
@@ -74,13 +70,6 @@ Canvas& Canvas::operator=(Canvas&& other) noexcept
     return *this;
 }
 
-// Destructor
-Canvas::~Canvas()
-{
-    // Qt will handle cleanup automatically
-}
-
-// Move methods for efficient data transfer
 void Canvas::addLineData(QVector<LineData>&& lines)
 {
     m_lines = std::move(lines);
@@ -204,7 +193,6 @@ void Canvas::paintEvent(QPaintEvent *event)
 
 void Canvas::setCanvasState()
 {
-    // Create state with move semantics for better performance
     CanvasState state;
     state.line = std::move(m_lines);
     state.ellipse = std::move(m_ellipses);
@@ -215,7 +203,6 @@ void Canvas::setCanvasState()
     undoStack.append(std::move(state));
     redoStack.clear();
     
-    // Recreate empty vectors for new drawing
     m_lines.clear();
     m_ellipses.clear();
     m_rectangles.clear();
@@ -328,35 +315,16 @@ QPolygon Canvas::createDiamond(const QPointF &start, const QPointF &end)
             << QPoint(rect.left(), rect.center().y());
     return diamond;
 }
-// void drawTriangle(QPainter &painter, const QPointF &start, const QPointF &end);
-// void drawDiamond(QPainter &painter, const QPointF &start, const QPointF &end);
-// void drawLine(QPainter &painter, const QPointF &start, const QPointF &end);
 
 QLine Canvas::createLine(const QPointF &start, const QPointF &end)
 {
     return QLine(start.toPoint(), end.toPoint());
 }
 
-
-// setCanvasState()
-// undo()
-// redo()
-
-
-// struct CanvasState 
-//     {
-//         QVector<LineData> line;
-//         QVector<EllipseData> ellipse;
-//         QVector<RectangleData> rectangle;
-//         QVector<TriangleData> triangle;
-//         QVector<DiamondData> diamond;
-//     };
-
 void Canvas::undo()
 {
     if (!undoStack.isEmpty())
     {
-        // Create current state and move it to redo stack
         CanvasState current;
         current.line = std::move(m_lines);
         current.ellipse = std::move(m_ellipses);
@@ -365,7 +333,6 @@ void Canvas::undo()
         current.diamond = std::move(m_diamonds);
         redoStack.append(std::move(current));
 
-        // Move previous state from undo stack
         CanvasState prev = std::move(undoStack.takeLast());
         m_lines = std::move(prev.line);
         m_ellipses = std::move(prev.ellipse);
@@ -380,7 +347,6 @@ void Canvas::redo()
 {
     if (!redoStack.isEmpty()) 
     {
-        // Create current state and move it to undo stack
         CanvasState current;
         current.line = std::move(m_lines);
         current.ellipse = std::move(m_ellipses);
@@ -389,7 +355,6 @@ void Canvas::redo()
         current.diamond = std::move(m_diamonds);
         undoStack.append(std::move(current));
 
-        // Move next state from redo stack
         CanvasState next = std::move(redoStack.takeLast());
         m_lines = std::move(next.line);
         m_ellipses = std::move(next.ellipses);
