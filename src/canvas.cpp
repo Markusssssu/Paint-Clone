@@ -323,7 +323,7 @@ QLine Canvas::createLine(const QPointF &start, const QPointF &end)
 
 void Canvas::undo()
 {
-    if (!undoStack.isEmpty())
+    if (!m_undoStack.isEmpty())
     {
         CanvasState current;
         current.line = std::move(m_lines);
@@ -333,7 +333,7 @@ void Canvas::undo()
         current.diamond = std::move(m_diamonds);
         redoStack.append(std::move(current));
 
-        CanvasState prev = std::move(undoStack.takeLast());
+        CanvasState prev = std::move(m_undoStack.takeLast());
         m_lines = std::move(prev.line);
         m_ellipses = std::move(prev.ellipse);
         m_rectangles = std::move(prev.rectangle);
@@ -345,7 +345,7 @@ void Canvas::undo()
 
 void Canvas::redo()
 {
-    if (!redoStack.isEmpty()) 
+    if (!m_redoStack.isEmpty()) 
     {
         CanvasState current;
         current.line = std::move(m_lines);
@@ -355,7 +355,7 @@ void Canvas::redo()
         current.diamond = std::move(m_diamonds);
         undoStack.append(std::move(current));
 
-        CanvasState next = std::move(redoStack.takeLast());
+        CanvasState next = std::move(m_redoStack.takeLast());
         m_lines = std::move(next.line);
         m_ellipses = std::move(next.ellipses);
         m_rectangles = std::move(next.rectangle);
