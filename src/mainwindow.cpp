@@ -74,14 +74,12 @@ TitleBar::TitleBar(QWidget *parent) : QFrame(parent) {
     connect(closeBtn, &QPushButton::clicked, this, &TitleBar::closeClicked);
 }
 
-// Move constructor for TitleBar
 TitleBar::TitleBar(TitleBar&& other) noexcept
     : QFrame(std::move(other))
     , m_dragPosition(std::move(other.m_dragPosition))
 {
 }
 
-// Move assignment operator for TitleBar
 TitleBar& TitleBar::operator=(TitleBar&& other) noexcept
 {
     if (this != &other) {
@@ -89,12 +87,6 @@ TitleBar& TitleBar::operator=(TitleBar&& other) noexcept
         m_dragPosition = std::move(other.m_dragPosition);
     }
     return *this;
-}
-
-// Destructor for TitleBar
-TitleBar::~TitleBar()
-{
-    // Qt will handle cleanup automatically
 }
 
 void TitleBar::mousePressEvent(QMouseEvent *event) {
@@ -178,7 +170,6 @@ MainWindow::MainWindow(QWidget *parent)
     canvas->setColor(__color);
     canvas->setWidth(__width);
 
-    // Create control buttons with improved styling
     QPushButton* plusBtn = new QPushButton("+");
     QPushButton* minusBtn = new QPushButton("-");
     plusBtn->setFixedSize(40, 30);
@@ -189,7 +180,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(plusBtn, &QPushButton::clicked, this, &MainWindow::plus);
     connect(minusBtn, &QPushButton::clicked, this, &MainWindow::minus);
 
-    // Create figure buttons with improved styling
     QToolButton* triAngleBtn = new QToolButton();
     triAngleBtn->setIcon(QIcon(":/icons/triangle"));
     triAngleBtn->setToolTip("Triangle");
@@ -237,7 +227,7 @@ MainWindow::MainWindow(QWidget *parent)
     redoBtn->setStyleSheet("QPushButton { font-size: 11px; }");
 
     connect(triAngleBtn, &QToolButton::clicked, [this, triAngleBtn, rectAngleBtn, ellipseBtn, diamondBtn, lineBtn, moveFigureBtn]() {
-        canvas->setDrawingMode(3); // Triangle
+        canvas->setDrawingMode(3); 
         moveFigureBtn->setChecked(false);
         triAngleBtn->setChecked(true);
         rectAngleBtn->setChecked(false);
@@ -247,7 +237,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
     
     connect(rectAngleBtn, &QToolButton::clicked, [this, triAngleBtn, rectAngleBtn, ellipseBtn, diamondBtn, lineBtn, moveFigureBtn]() {
-        canvas->setDrawingMode(4); // Rectangle
+        canvas->setDrawingMode(4); 
         moveFigureBtn->setChecked(false);
         triAngleBtn->setChecked(false);
         rectAngleBtn->setChecked(true);
@@ -257,7 +247,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
     
     connect(ellipseBtn, &QToolButton::clicked, [this, triAngleBtn, rectAngleBtn, ellipseBtn, diamondBtn, lineBtn, moveFigureBtn]() {
-        canvas->setDrawingMode(5); // Ellipse
+        canvas->setDrawingMode(5); 
         moveFigureBtn->setChecked(false);
         triAngleBtn->setChecked(false);
         rectAngleBtn->setChecked(false);
@@ -267,7 +257,7 @@ MainWindow::MainWindow(QWidget *parent)
     });
     
     connect(diamondBtn, &QToolButton::clicked, [this, triAngleBtn, rectAngleBtn, ellipseBtn, diamondBtn, lineBtn, moveFigureBtn]() {
-        canvas->setDrawingMode(6); // Diamond
+        canvas->setDrawingMode(6); 
         moveFigureBtn->setChecked(false);
         triAngleBtn->setChecked(false);
         rectAngleBtn->setChecked(false);
@@ -449,9 +439,8 @@ MainWindow::MainWindow(QWidget *parent)
     windowLayout->addLayout(mainLayout, 1);
     setLayout(windowLayout);
 
-    // Обеспечим начальную ширину titleBar
     titleBar->setFixedWidth(this->width());
-} // Закрытие конструктора MainWindow
+} 
 
 void MainWindow::color()
 {
@@ -504,7 +493,6 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     }
 }
 
-// Move constructor for MainWindow
 MainWindow::MainWindow(MainWindow&& other) noexcept
     : QWidget(std::move(other))
     , __color(std::move(other.__color))
@@ -513,13 +501,11 @@ MainWindow::MainWindow(MainWindow&& other) noexcept
     , canvas(other.canvas)
     , titleBar(other.titleBar)
 {
-    // Transfer ownership of pointers
     other.colorPickBtn = nullptr;
     other.canvas = nullptr;
     other.titleBar = nullptr;
 }
 
-// Move assignment operator for MainWindow
 MainWindow& MainWindow::operator=(MainWindow&& other) noexcept
 {
     if (this != &other) {
@@ -527,28 +513,17 @@ MainWindow& MainWindow::operator=(MainWindow&& other) noexcept
         __color = std::move(other.__color);
         __width = other.__width;
         
-        // Clean up current resources
         delete colorPickBtn;
         delete canvas;
         delete titleBar;
         
-        // Transfer ownership
         colorPickBtn = other.colorPickBtn;
         canvas = other.canvas;
         titleBar = other.titleBar;
         
-        // Clear other's pointers
         other.colorPickBtn = nullptr;
         other.canvas = nullptr;
         other.titleBar = nullptr;
     }
     return *this;
 }
-
-// Destructor for MainWindow
-MainWindow::~MainWindow()
-{
-    // Qt will handle cleanup of child widgets automatically
-}
-
-
